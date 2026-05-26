@@ -1,5 +1,34 @@
-<?php
-// Redirect ke URL tujuan
-header("Location: https://uncoversprang.com/n9m3b57fv?key=0a64f9916534d0047e6aa57b2cbc9c54");
-exit();
-?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortlink Redirect</title>
+</head>
+<body>
+
+<h2>Memproses Redirect...</h2>
+
+<script>
+    // Daftar shortlink
+    const links = {
+        google: "https://google.com",
+        youtube: "https://youtube.com",
+        facebook: "https://facebook.com",
+        wa: "https://wa.me/6281234567890"
+    };
+
+    // Ambil parameter URL
+    const params = new URLSearchParams(window.location.search);
+    const go = params.get("go");
+
+    // Redirect jika tersedia
+    if (links[go]) {
+        window.location.href = links[go];
+    } else {
+        document.body.innerHTML = "<h2>Shortlink tidak ditemukan</h2>";
+    }
+</script>
+
+</body>
+</html>
