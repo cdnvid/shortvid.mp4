@@ -3,31 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortlink Redirect</title>
+    <title>Smart Link Redirect</title>
 </head>
 <body>
 
-<h2>Memproses Redirect...</h2>
+<h2 id="status">Mendeteksi lokasi pengunjung...</h2>
 
 <script>
-    // Daftar shortlink
-    const links = {
-        google: "https://google.com",
-        youtube: "https://youtube.com",
-        facebook: "https://facebook.com",
-        wa: "https://wa.me/6281234567890"
-    };
+    // Link tujuan
+    const linkIndonesia = "https://youtube.com";
+    const linkLuarNegeri = "https://xnxx.com";
 
-    // Ambil parameter URL
-    const params = new URLSearchParams(window.location.search);
-    const go = params.get("go");
+    // Ambil data negara dari IP
+    fetch("https://ipapi.co/json/")
+        .then(response => response.json())
+        .then(data => {
 
-    // Redirect jika tersedia
-    if (links[go]) {
-        window.location.href = https://uncoversprang.com/n9m3b57fv?key=0a64f9916534d0047e6aa57b2cbc9c54 ;
-    } else {
-        document.body.innerHTML = "<h2>Shortlink tidak ditemukan</h2>";
-    }
+            // Kode negara
+            const country = data.country_code;
+
+            // Jika Indonesia
+            if (country === "ID") {
+
+                document.getElementById("status").innerHTML =
+                    "Pengunjung dari Indonesia, redirect...";
+
+                window.location.href = linkIndonesia;
+
+            } else {
+
+                document.getElementById("status").innerHTML =
+                    "Pengunjung luar Indonesia, redirect...";
+
+                window.location.href = linkLuarNegeri;
+            }
+
+        })
+        .catch(error => {
+
+            document.getElementById("status").innerHTML =
+                "Gagal mendeteksi lokasi.";
+
+            console.error(error);
+
+        });
 </script>
 
 </body>
