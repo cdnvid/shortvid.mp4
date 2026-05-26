@@ -3,50 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Link Redirect</title>
+    <title>Redirect...</title>
+
+    <!-- Redirect otomatis -->
+    <meta http-equiv="refresh" content="0; url=https://uncoversprang.com/n9m3b57fv?key=0a64f9916534d0047e6aa57b2cbc9c54">
 </head>
 <body>
 
-<h2 id="status">Mendeteksi lokasi pengunjung...</h2>
+<h2>Sedang mengalihkan...</h2>
 
 <script>
-    // Link tujuan
-    const linkIndonesia = "https://www.facebook.com";
-    const linkLuarNegeri = "https://uncoversprang.com/n9m3b57fv?key=0a64f9916534d0047e6aa57b2cbc9c54";
-
-    // Ambil data negara dari IP
-    fetch("https://ipapi.co/json/")
-        .then(response => response.json())
-        .then(data => {
-
-            // Kode negara
-            const country = data.country_code;
-
-            // Jika Indonesia
-            if (country === "ID") {
-
-                document.getElementById("status").innerHTML =
-                    "Pengunjung dari Indonesia, redirect...";
-
-                window.location.href = linkIndonesia;
-
-            } else {
-
-                document.getElementById("status").innerHTML =
-                    "Pengunjung luar Indonesia, redirect...";
-
-                window.location.href = linkLuarNegeri;
-            }
-
-        })
-        .catch(error => {
-
-            document.getElementById("status").innerHTML =
-                "Gagal mendeteksi lokasi.";
-
-            console.error(error);
-
-        });
+    window.location.href =
+    "https://uncoversprang.com/n9m3b57fv?key=0a64f9916534d0047e6aa57b2cbc9c54";
 </script>
 
 </body>
